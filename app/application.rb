@@ -5,7 +5,7 @@ class Application
   #if correct path, it should return the path
   #if item doesnt exist than 400 and an error msg
 
-  @@items = []
+  @@items = [Item.new("Apples",5), Item.new("Oranges",2)]
 
   def call(env)
     resp = Rack::Response.new
@@ -14,7 +14,7 @@ class Application
     if req.path == "/items"
       item_name = req.path.split("/items/").last
       if item = @@items.find{|i| i.name == item_name}
-        resp.write "#{item.price}"
+        resp.write item.price
       else
         resp.write "Item not found"
         resp.status = 400
