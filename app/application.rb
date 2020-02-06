@@ -11,7 +11,8 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
-    if req.path == "/items/<ITEM NAME>"
+    if req.path == "/items"
+      item_name = req.path.split("/items/").last
       resp.write item.name
     else
       resp.write "Route not found"
