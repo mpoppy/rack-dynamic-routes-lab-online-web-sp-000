@@ -6,7 +6,7 @@ class Application
   #if item doesnt exist than 400 and an error msg
 
   @@items = []
-  
+
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
